@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Dino Runner RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+        <div id="game-ui">
+            <div id="stats-panel">
+                Score: <span id="scoreDisplay">0</span> | 
+                Money: $<span id="moneyDisplay">0</span> | 
+                Next Rest: <span id="timeDisplay">180</span>s
+            </div>
+            
+            <div id="stamina-container">
+                Stamina:
+                <div id="stamina-bar-bg">
+                    <div id="staminaBar"></div>
+                </div>
+            </div>
+            
+            <div id="skill-cooldowns">
+                <div class="skill-btn" data-skill="1">
+                    1 (Slow)
+                    <div class="cd-overlay" id="cd-time"></div>
+                </div>
+                <div class="skill-btn" data-skill="2">
+                    2 (Invincible)
+                    <div class="cd-overlay" id="cd-invincible"></div>
+                </div>
+                <div class="skill-btn" data-skill="3">
+                    3 (No Spawn)
+                    <div class="cd-overlay" id="cd-clear"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="gameOverScreen" class="overlay hidden">
+            <h2>GAME OVER</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button onclick="window.location.reload()">Restart</button>
+        </div>
+
+        <div id="shopScreen" class="overlay hidden">
+            <h2>REST STATION & SHOP</h2>
+            <p>Money: $<span id="shopMoney">0</span></p>
+            <div id="upgrades-list">
+                <button onclick="game.upgrade('speed')">Upgrade Speed (Cost: $<span id="cost-speed">100</span>)</button>
+                <button onclick="game.upgrade('stamina')">Upgrade Stamina (Cost: $<span id="cost-stamina">100</span>)</button>
+                <button onclick="game.upgrade('cdr')">Upgrade CDR (Cost: $<span id="cost-cdr">200</span>)</button>
+            </div>
+            <button onclick="game.closeShop()">Continue Run</button>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
